@@ -1,0 +1,67 @@
+<!--Spinner-->
+<ng-http-loader [backgroundColor]="'#0000ff'" [spinner]="spinkit.skWave" [debounceDelay]="100" [minDuration]="300"
+  [extraDuration]="300">
+</ng-http-loader>
+
+<div class="container" style="text-align:center">
+  <div class="row" *ngIf="finalData">
+    <!--Alphabetically Sort and Filter By name-->
+    <input type="text" [(ngModel)]="userFilter.name" placeholder="Filter By book name or character name or house name"
+      class="form-control input-md">
+    <div *ngFor="let data of finalData | orderBy: 'name':false:true | filterBy: userFilter" class="col-md-4 ">
+      <!--Book Div start-->
+      <a [routerLink]="['/book', getId(data.url)]">
+        <div class="card text-center" style="width: 16rem;" *ngIf="data.isbn" id="cardBook">
+          <div class="zoom">
+            <img class="card-img-top img-fluid" src="assets/books.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ data.name | uppercase }}</h5>
+              <p class="card-text">{{ data.authors }}</p>
+            </div>
+            <div class="card-footer text-muted">
+              A Book
+            </div>
+          </div>
+        </div>
+      </a>
+      <!--Book Div end-->
+
+      <!-- House Div Start-->
+      <a [routerLink]="['/house', getId(data.url)]">
+        <div class="card text-center" style="width: 16rem;" *ngIf="data.region || data.coatOfArms" id="cardHouse">
+          <div class="zoom">
+            <img class="card-img-top img-fluid" src="assets/houses.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ data.name | uppercase }}</h5>
+              <p class="card-text">{{ data.region }} </p>
+            </div>
+            <div class="card-footer text-muted">
+              A House
+            </div>
+          </div>
+        </div>
+      </a>
+      <!--House Div end-->
+
+      <!--Character Div start-->
+      <a [routerLink]="['/character', getId(data.url)]">
+        <div class="card text-center" style="width: 16rem;" *ngIf="data.gender" id="cardCharacter">
+          <div class="zoom">
+            <img class="card-img-top img-fluid" src="assets/characters.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title " id="char">{{ data.name }}</h5>
+              <p class="card-text">{{ data.gender }}</p>
+            </div>
+            <div class="card-footer text-muted">
+              A Character
+            </div>
+          </div>
+        </div>
+      </a>
+      <!--Character Div End-->
+    </div>
+    <!--ngFor Div End-->
+  </div>
+  <!--row Div End-->
+</div>
+<!--container Div End-->

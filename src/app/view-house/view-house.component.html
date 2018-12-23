@@ -1,0 +1,134 @@
+<!---Spinner-->
+<ng-http-loader [backgroundColor]="'#0000ff'" [spinner]="spinkit.skWave" [debounceDelay]="100" [minDuration]="300"
+  [extraDuration]="300">
+  <!--spinner end-->
+</ng-http-loader>
+<div class="container" id="inside" *ngIf="currentHouse">
+  <div class="row" style="text-align: center">
+    <div class="col-md-12">
+      <h1>
+        <b>A House : {{currentHouse.name}}</b>
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" id="image">
+      <img class="img-fluid" src="assets/houses.jpg" alt="Image">
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-md-12">
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                aria-controls="collapseOne">
+                INFORMATION
+              </button>
+            </h5>
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              <p>Name:
+                <span>{{currentHouse.name}}</span>
+              </p>
+              <p>Region:
+                <span>{{currentHouse.region}}</span>
+              </p>
+              <p *ngIf="currentHouse.coatOfArms != ''">Coat Of Arms:
+                <span>
+                  <i>{{currentHouse.coatOfArms}}</i>
+                </span>
+              </p>
+              <p *ngIf="currentHouse.words != ''">Words:
+                <span>{{currentHouse.words}}</span>
+              </p>
+              <p *ngIf="currentHouse.seats != ''">Seats:
+                <span>{{currentHouse.seats}}</span>
+              </p>
+              <p *ngIf="currentHouse.titles != ''">Titles:
+                <span>{{currentHouse.titles}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                aria-controls="collapseTwo">
+                HISTORY
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+              <p *ngIf="currentHouse.currentLord ">Current Lord:
+                <span>
+                  <a [routerLink]="['/character',getId(currentHouse.currentLord)]" class="btn btn-link">Character
+                    ID:{{getId(currentHouse.currentLord)}}</a>
+                </span>
+              </p>
+              <p *ngIf="currentHouse.heir ">Heir:
+                <span>
+                  <a [routerLink]="['/character',getId(currentHouse.heir)]" class="btn btn-link">Character
+                    ID:{{getId(currentHouse.heir)}}</a>
+                </span>
+              </p>
+              <p *ngIf="currentHouse.overlord ">OverLord:
+                <span>
+                  <a [routerLink]="['/house',getId(currentHouse.overlord)]" class="btn btn-link">House
+                    ID:{{getId(currentHouse.overlord)}}</a>
+                </span>
+              </p>
+              <p *ngIf="currentHouse.founded != ''">Founded:
+                <span> {{currentHouse.founded}}</span>
+              </p>
+              <p *ngIf="currentHouse.founder ">Founder:
+                <span>
+                  <a [routerLink]="['/character',getId(currentHouse.founder)]" class="btn btn-link">Character
+                    ID:{{getId(currentHouse.founder)}}</a>
+                </span>
+              </p>
+              <p *ngIf="currentHouse.diedOut != ''">Died Out:
+                <span> {{currentHouse.diedOut}}</span>
+              </p>
+              <p *ngIf="currentHouse.ancestralweapons">Ancestral Weapons:
+                <span>{{currentHouse.ancestralweapons}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                aria-controls="collapseThree">
+                SWORN MEMBERS
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body" style="overflow-y:scroll;height: 300px;">
+              <p *ngIf="currentHouse.swornMembers != ''">Sworn Members: </p>
+              <div *ngFor="let member of currentHouse.swornMembers">
+                <a [routerLink]="['/character',getId(member)]" class="btn btn-link">{{member}}</a>
+              </div>
+              <p *ngIf="currentHouse.cadetBranches != ''">Cadet Branch: </p>
+              <div *ngFor="let cadet of currentHouse.cadetBranches">
+                <a [routerLink]="['/character',getId(cadet)]" class="btn btn-link">{{cadet}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="text-align: center">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-warning" (click)="goToPreviousPage()">Back</button>
+    </div>
+  </div>
+</div>

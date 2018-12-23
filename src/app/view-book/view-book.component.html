@@ -1,0 +1,101 @@
+<ng-http-loader [backgroundColor]="'#0000ff'" [spinner]="spinkit.skWave" [debounceDelay]="100" [minDuration]="300"
+  [extraDuration]="300">
+</ng-http-loader>
+
+<div class="container" id="inside" *ngIf="currentBook">
+  <div class="row" style="text-align: center">
+    <div class="col-md-12">
+      <h1>
+        <b>A Book : {{currentBook.name}}</b>
+      </h1>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-md-12 " style="text-align: center">
+      <img class="img-fluid" src="assets/books.jpg" alt="Image">
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-md-12 " style="text-align: center">
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                aria-controls="collapseOne">
+                INFORMATION
+              </button>
+            </h5>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              <p>ISBN:
+                <span>{{currentBook.isbn}}</span>
+              </p>
+              <p>Name:
+                <span>{{currentBook.name}}</span>
+              </p>
+              <p *ngIf=currentBook.author>Author:
+                <span>{{currentBook.author}}</span>
+              </p>
+              <p>Publisher:
+                <span>{{currentBook.publisher}}</span>
+              </p>
+              <p>No of Pages:
+                <span>{{currentBook.numberOfPages}}</span>
+              </p>
+              <p>Released:
+                <span>{{currentBook.released | date}}</span>
+              </p>
+              <p>Country:
+                <span>{{currentBook.country}}</span>
+              </p>
+              <p>Media Type:
+                <span>{{currentBook.mediaType}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                aria-controls="collapseTwo">
+                CHARACTERS
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body" style="overflow-y:scroll;height: 300px;">
+              <div *ngFor="let character of currentBook.characters">
+                <a [routerLink]="['/character',getId(character)]" class="btn btn-link">{{character}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                aria-controls="collapseThree">
+                POV CHARACTERS
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body" style="overflow-y:scroll;height: 300px;">
+              <div *ngFor="let character of currentBook.povCharacters">
+                <a [routerLink]="['/character',getId(character)]" class="btn btn-link">{{character}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="text-align: center">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-warning" (click)="goToPreviousPage()">Back</button>
+    </div>
+  </div>
+</div>

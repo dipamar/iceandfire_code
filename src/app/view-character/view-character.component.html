@@ -1,0 +1,129 @@
+<!--spinner-->
+<ng-http-loader [backgroundColor]="'#0000ff'" [spinner]="spinkit.skWave" [debounceDelay]="100" [minDuration]="300"
+  [extraDuration]="300">
+  <!--spinner-->
+</ng-http-loader>
+<div class="container" id="inside" *ngIf="currentCharacter">
+  <div class="row" style="text-align: center">
+    <div class="col-md-12">
+      <h1>
+        <b>A Character : {{ currentCharacter.name || currentCharacter.aliases}}</b>
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <img class="img-fluid" src="assets/characters.jpg" alt="Image">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                aria-controls="collapseOne">
+                INFO
+              </button>
+            </h5>
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              <p *ngIf="currentCharacter.name">Name:
+                <span>{{currentCharacter.name}}</span>
+              </p>
+              <p *ngIf="currentCharacter.gender">Gender:
+                <span>{{currentCharacter.gender}}</span>
+              </p>
+              <p *ngIf="currentCharacter.culture">Culture:
+                <span>{{currentCharacter.culture}}</span>
+              </p>
+              <p *ngIf="currentCharacter.born">Born:
+                <span>{{currentCharacter.born}}</span>
+              </p>
+              <p *ngIf="currentCharacter.died">Died:
+                <span>{{currentCharacter.died}}</span>
+              </p>
+              <p *ngIf="currentCharacter.title">Title:
+                <span>
+                  <i>{{currentCharacter.title}}</i>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                aria-controls="collapseTwo">
+                ALIASES
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+              <p *ngIf="currentCharacter.aliases != ''">Aliases:
+                <span>
+                  <i>{{currentCharacter.aliases}}</i>
+                </span>
+              </p>
+              <p *ngIf="currentCharacter.father ">Father:
+                <span>
+                  <a [routerLink]="['/character',getId(currentCharacter.father)]" class="btn btn-link">Character
+                    ID:{{getId(currentCharacter.father)}}</a>
+                </span>
+
+              </p>
+              <p *ngIf="currentCharacter.mother">Mother:
+                <span>
+                  <a [routerLink]="['/character',getId(currentCharacter.mother)]" class="btn btn-link">Character
+                    ID:{{getId(currentCharacter.mother)}}</a>
+                </span>
+              </p>
+              <p *ngIf="currentCharacter.spouse ">Spouse:
+                <span>
+                  <a [routerLink]="['/character',getId(currentCharacter.spouse)]" class="btn btn-link">Character
+                    ID:{{getId(currentCharacter.spouse)}}</a>
+                </span>
+              </p>
+
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                aria-controls="collapseThree">
+                MENTIONS
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body" style="overflow-y:scroll;height: 300px;">
+              <p>Books :</p>
+              <div *ngFor="let book of currentCharacter.books">
+                <a [routerLink]="['/book',getId(book)]" class="btn btn-link">{{book}}</a>
+              </div>
+
+              <p *ngIf="currentCharacter.povBooks != ''">POV Books:</p>
+              <div *ngFor="let book of currentCharacter.povBooks">
+                <a [routerLink]="['/book',getId(book)]" class="btn btn-link">{{book}}</a>
+              </div>
+              <p *ngIf="currentCharacter.tvSeries != ''">TV Series: {{currentCharacter.tvSeries}}</p>
+              <p *ngIf="currentCharacter.playedBy != ''">Played By: {{currentCharacter.playedBy}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="text-align: center">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-warning" (click)="goToPreviousPage()">Back</button>
+    </div>
+  </div>
+</div>

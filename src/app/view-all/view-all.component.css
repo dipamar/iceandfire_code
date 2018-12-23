@@ -1,0 +1,68 @@
+.container2{
+    margin-bottom: 4em; 
+}
+#id img{
+    -o-background-size: 100% 100%;
+    margin-top: 0;  
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    background: no-repeat center;
+    background-size: cover;
+}
+.zoom{
+    overflow: hidden;position: relative;
+}
+.zoom:hover img{
+    -moz-transform: scale(1.08);
+    transform: scale(1.08);
+    -webkit-transform: scale(1.08)
+}
+.zoom img{   
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.col-md-4{
+    margin-top: 4%;
+}
+#cardBook:hover{
+    -moz-box-shadow:-1px 20px 60px -12px rgb(255, 5, 17);
+    box-shadow:-1px 20px 60px -12px rgb(109, 20, 25);
+    -webkit-box-shadow:-1px 20px 60px -12px rgb(65, 7, 10);
+}
+
+#cardHouse:hover{
+    box-shadow:-1px 20px 60px -12px rgb(60, 44, 97);
+    -webkit-box-shadow:-1px 20px 60px -12px rgb(68, 43, 156);
+    -moz-box-shadow:-1px 20px 60px -12px rgb(83, 32, 131);
+}
+#cardCharacter:hover{
+    box-shadow:-1px 20px 60px -12px rgb(12, 105, 43);
+    -webkit-box-shadow:-1px 20px 60px -12px rgb(11, 105, 15);
+    -moz-box-shadow:-1px 20px 60px -12px rgb(22, 121, 30);
+}
+.card{
+    float: center;
+    color: rgb(41, 47, 56);
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: text;
+    border: 0px none rgb(41, 47, 56);
+    list-style: none outside none;
+    letter-spacing: -0.195px;
+    width: 172.172px;
+    border-radius: 5px;
+    text-rendering: optimizeSpeed; 
+    padding: 0px 20px;
+    text-decoration: none ;
+    margin: 0px 0px 12px;
+    float: none;
+    column-rule-color: rgb(41, 47, 56);
+    perspective-origin: 86.0781px 22.5px;
+    transform-origin: 86.0781px 22.5px;
+    margin: 0 auto;
+    }
+  a:link{
+      text-decoration: none!important;
+  } 
+

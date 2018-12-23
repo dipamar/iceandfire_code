@@ -1,0 +1,21 @@
+.container{
+    background-color: azure
+}
+.row{
+    padding: .5em .5em;
+}
+
+img{
+    height: auto;
+    width: 100%;
+    align-items: center
+}
+h1{
+    text-align: center
+}
+span{
+    color: rgb(15, 17, 109);
+    font-size: 1.1em;
+    letter-spacing: -0.250px;
+    text-rendering: optimizeSpeed;
+}

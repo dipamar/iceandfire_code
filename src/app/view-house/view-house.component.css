@@ -1,0 +1,27 @@
+.container{
+    background-color: rgb(88, 121, 83)
+}
+
+h1{
+    text-align: center
+}
+span{
+    color: rgb(72, 10, 85);
+    font-size: 1.1em;
+    letter-spacing: -0.250px;
+    text-rendering: optimizeSpeed;
+}
+span i{
+    color: rgb(35, 130, 255);
+    letter-spacing: -0.250px;
+    text-rendering: optimizeSpeed;
+}
+.row{
+    padding: .5em .5em;
+}
+
+ img{
+    height: auto;
+    width: 100%;
+    align-items: center
+ }

@@ -1,0 +1,35 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <div class="container">
+    <div class="row header">
+      <div class="col-md-12">
+        <a style="color:white;">Ice And Fire</a>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/all']">
+          <img src="../favicon.ico" width="30" hight="30" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" [routerLink]="['/all']">HomePage <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/about']">About</a>
+            </li>
+          </ul>
+        </div>
+        <!--navbar collapse-->
+      </div>
+      <!--container fluid-->
+    </nav>
+    <router-outlet></router-outlet>
+  </div>
